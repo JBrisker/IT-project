@@ -1,0 +1,14 @@
+body{
+    background-color: aliceblue;
+}
+#reqneeded{
+    background-color: rgba(116, 104, 104, 0.733);
+
+}
+#noreq
+{
+    background-color:white;
+}
+#noreq:hover{
+    background-color: lightblue;
+}
