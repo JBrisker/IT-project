@@ -1,25 +1,33 @@
 body{
     background-color: rgb(110, 171, 224);
 }
-#reqneeded{
+/*
+{
     background-color: gray;
 
 }
-#noreq
-{
+*/
+/* #noreq{
     background-color:rgb(255, 255, 255);
-}
+    cursor:pointer;
+}  */
 
-table
+.program
 {
     display:flex;
     justify-content: flex-start;
-    
  }
-td
+
+td,th
 {
 border-radius: 0.5em;
 padding:0.5em;
 border-spacing: 0.5em;
 white-space: nowrap;
+background-color: rgb(245, 245, 245);
+
 }  
+ td::selection
+ {
+    background-color: lightgreen;
+ }
