@@ -1,16 +1,7 @@
 body{
     background-color: rgb(110, 171, 224);
-}
-/*
-{
-    background-color: gray;
-
-}
-*/
-/* #noreq{
-    background-color:rgb(255, 255, 255);
     cursor:pointer;
-}  */
+}
 
 .program
 {
@@ -24,10 +15,16 @@ border-radius: 0.5em;
 padding:0.5em;
 border-spacing: 0.5em;
 white-space: nowrap;
-background-color: rgb(245, 245, 245);
-
 }  
- td::selection
- {
-    background-color: lightgreen;
- }
+
+.no-prereq {
+  background-color: rgb(255, 255, 255);
+}
+
+.has-prereq{
+    background-color: lightgray;
+}
+
+.completed {
+  background-color: lightgreen;
+}
