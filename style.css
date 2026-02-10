@@ -9,22 +9,20 @@ body{
     justify-content: flex-start;
  }
 
-td,th
-{
-border-radius: 0.5em;
-padding:0.5em;
-border-spacing: 0.5em;
-white-space: nowrap;
-}  
-
-.no-prereq {
-  background-color: rgb(255, 255, 255);
+ td,th{
+    border-radius: 0.5em;
+    padding:0.5em;
+    border-spacing: 0.5em;
+    white-space: nowrap;
+ }
+tr.no-prereq td {
+  background-color: white;
 }
 
-.has-prereq{
-    background-color: lightgray;
+tr.has-prereq td {
+  background-color: gray;
 }
 
-.completed {
+tr.completed td {
   background-color: lightgreen;
 }
