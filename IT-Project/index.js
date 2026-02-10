@@ -38,8 +38,8 @@ container.innerHTML = `
   <table>
     <thead>
       <tr>
-        <th>Requisite<th>
-        <th>Course Code</th>
+        <th>Prerequisites</th>
+        <th>Course</th>
         <th>Credits</th>
         <th>Prereqs</th>
       </tr>
