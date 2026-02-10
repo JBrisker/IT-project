@@ -1,6 +1,6 @@
 body{
     background-color: rgb(110, 171, 224);
-    cursor:pointer;
+    
 }
 
 .program
@@ -16,13 +16,21 @@ body{
     white-space: nowrap;
  }
 tr.no-prereq td {
-  background-color: white;
+  background-color: white; /*makes background of open courses white*/
+  cursor:pointer;
+}
+tr.no-prereq:hover td{
+  background-color: #88d0e6;      /* light blue tint on hover */
 }
 
 tr.has-prereq td {
   background-color: gray;
+  cursor:not-allowed;
 }
 
 tr.completed td {
   background-color: lightgreen;
+  cursor: pointer;
+  border-left: 4px solid #3c9a3c;
+
 }
