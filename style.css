@@ -6,7 +6,8 @@ body{
 .program
 {
     display:flex;
-    justify-content: flex-start;
+    justify-content: center;
+  
  }
 
  td{
@@ -15,20 +16,20 @@ body{
     border-spacing: 0.5em;
     white-space: nowrap;
  }
-tr.no-prereq td {
+tr.open td {
   background-color: white; /*makes background of open courses white*/
   cursor:pointer;
 }
-tr.no-prereq:hover td{
+tr.open:hover td{
   background-color: #88d0e6;      /* light blue tint on hover */
 }
 
-tr.has-prereq td {
+tr.locked td {
   background-color: gray;
   cursor:not-allowed;
 }
 
-tr.completed td {
+tr.completed td{
   background-color: lightgreen;
   cursor: pointer;
   border-left: 4px solid #3c9a3c;

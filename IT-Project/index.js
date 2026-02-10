@@ -1,33 +1,33 @@
 // data set for table
 var courses = [
   
-  {id:"no-prereq", name:"CSNT 115 A+ Software Essentials", credits:6, coreq:["CSNT 116"]},
-  {id:"no-prereq",name:"CSNT 116 A+ Hardware", credits:6, coreq:["CSNT 115"]},
-  {id:"no-prereq", name:"CMST& 210 Interpersonal Communication", credits:5},
+  {id:"open", name:"CSNT 115 A+ Software Essentials", credits:6, coreq:["CSNT 116"]},
+  {id:"open",name:"CSNT 116 A+ Hardware", credits:6, coreq:["CSNT 115"]},
+  {id:"open", name:"CMST& 210 Interpersonal Communication", credits:5},
   //Quarter 2
-  {id:"has-prereq", name:"CSNT 124 Open Source Operating Systems", credits:6, prereq:["CSNT 115","CSNT 116"], coreq:["CSNT 125"]},
-  {id:"has-prereq", name: "CSNT 125 Shells and Scripts", credits:6, prereq:["CSNT 115","CSNT 116"]},
-  {id:"no-prereq", name:"CSD 110 Computer Programming Fundamentals with Python", credits:5},
+  {id:"locked", name:"CSNT 124 Open Source Operating Systems", credits:6, prereq:["CSNT 115","CSNT 116"], coreq:["CSNT 125"]},
+  {id:"locked", name: "CSNT 125 Shells and Scripts", credits:6, prereq:["CSNT 115","CSNT 116"]},
+  {id:"open", name:"CSD 110 Computer Programming Fundamentals with Python", credits:5},
   //Quarter 3
-  {id:"has-prereq", name:"CSNT 231 Network Fundamentals I", credits:6, prereq:["CSNT 124","CSNT 125"]},
-  {id:"has-prereq", name:"CSNT 232 Network Fundamentals II", credits:6, prereq:["CSNT 124","CSNT 125"]},
-  {id:"has-prereq", name:"CS& 141 Computer Science I Java", credits:5, prereq:["CSD 110"]},
+  {id:"locked", name:"CSNT 231 Network Fundamentals I", credits:6, prereq:["CSNT 124","CSNT 125"]},
+  {id:"locked", name:"CSNT 232 Network Fundamentals II", credits:6, prereq:["CSNT 124","CSNT 125"]},
+  {id:"locked", name:"CS& 141 Computer Science I Java", credits:5, prereq:["CSD 110"]},
   //Quarter 4
-  {id:"no-prereq", name:"CJ& 101 Introduction to Criminal Justice", credits:5},
-  {id:"no-prereq", name:"ENGL& 101 English Composition I", credits:5},
-  {id:"has-prereq", name:"CS 143 Computer Science II Java", credits:5, prereq:["CS& 141"]},
+  {id:"open", name:"CJ& 101 Introduction to Criminal Justice", credits:5},
+  {id:"open", name:"ENGL& 101 English Composition I", credits:5},
+  {id:"locked", name:"CS 143 Computer Science II Java", credits:5, prereq:["CS& 141"]},
   //Quarter 5
-  {id:"no-prereq", name:"MATH& 141", credits:5},
-  {id:"has-prereq", name:"CSNT 255 Network Administration I", credits:6, prereq:["CSNT 231","CSNT 232","ENGL& 101"]},
-  {id:"has-prereq", name:"CSNT 256 Network Administration II", credits:6, prereq:["CSNT 231","CSNT 232"], coreq:["CSNT 255"]},
+  {id:"open", name:"MATH& 141", credits:5},
+  {id:"locked", name:"CSNT 255 Network Administration I", credits:6, prereq:["CSNT 231","CSNT 232","ENGL& 101"]},
+  {id:"locked", name:"CSNT 256 Network Administration II", credits:6, prereq:["CSNT 231","CSNT 232"], coreq:["CSNT 255"]},
   //Quarter6
-  {id:"no-prereq", name:"MATH& 142", credits:5},
-  {id:"has-prereq", name:"CSNT 241 Network Security and Encryption", credits:6, prereq:["CSNT 255","CSNT 256"], coreq:["CSNT 248"]},
-  {id:"has-prereq", name:"CSNT 248 Server Administration", credits:6, prereq:["CSNT 255","CSNT 256"], coreq:["CSNT 241"]},
+  {id:"open", name:"MATH& 142", credits:5},
+  {id:"locked", name:"CSNT 241 Network Security and Encryption", credits:6, prereq:["CSNT 255","CSNT 256"], coreq:["CSNT 248"]},
+  {id:"locked", name:"CSNT 248 Server Administration", credits:6, prereq:["CSNT 255","CSNT 256"], coreq:["CSNT 241"]},
   //Quarter 7
-  {id:"no-prereq", name:"CSNT 257 Cloud Computing", credits:6},
-  {id:"has-prereq", name:"CSNT 253 Capstone", credits:6, prereq:["CSNT 241","CSNT 248"], coreq:["CSNT 257"]},
-  {id:"has-prereq", name:"MATH& 151 Calculus I", credits:5, prereq:["MATH& 142"]},
+  {id:"open", name:"CSNT 257 Cloud Computing", credits:6},
+  {id:"locked", name:"CSNT 253 Capstone", credits:6, prereq:["CSNT 241","CSNT 248"], coreq:["CSNT 257"]},
+  {id:"locked", name:"MATH& 151 Calculus I", credits:5, prereq:["MATH& 142"]},
 
 ];
 
@@ -66,16 +66,16 @@ function colorCells() {
     const idCell = row.querySelector("td"); // check first column for id
     const req = idCell.textContent.trim();
 
-    if (req === "no-prereq") {
+    if (req === "open") {
       row.style.backgroundColor = "white";
-      row.classList.add("no-prereq");
-      row.classList.remove("has-prereq");
+      row.classList.add("open");
+      row.classList.remove("locked");
      
       
     } else {
       row.style.backgroundColor = "gray";
-      row.classList.add("has-prereq");
-      row.classList.remove("no-prereq");
+      row.classList.add("locked");
+      row.classList.remove("open");
 
     }
   });
@@ -89,19 +89,21 @@ function completeCourse() {
 
     const row = event.target.closest("tr");
 
-    // Only clickable if available or already completed
-    if (!row.classList.contains("no-prereq") &&
+    // Only clickable if available or completed
+    if (!row.classList.contains("open") &&
         !row.classList.contains("completed")) {
       return;
     }
 
-    // Toggle between no-prereq ↔ completed
+    // Toggle between no-prereq & completed
     if (row.classList.contains("completed")) {
       row.classList.remove("completed");
-      row.classList.add("no-prereq");
+      row.classList.add("open");
+      row.cells[0].innerHTML="open";
     } else {
-      row.classList.remove("no-prereq");
+      row.classList.remove("open");
       row.classList.toggle("completed");
+      row.cells[0].innerHTML="completed";
     }
 
     updatePrereqs();
@@ -130,13 +132,16 @@ function updatePrereqs() {
 
     if (allCompleted) {
      if(!row.classList.contains("completed")){
-      row.classList.add("no-prereq");
+      row.classList.add("open");
+      row.cells[0].innerHTML="open";
      }
-      row.classList.remove("has-prereq");
+      row.classList.remove("locked");
+      
     } else {
-      row.classList.add("has-prereq");
-      row.classList.remove("no-prereq");
+      row.classList.add("locked");
+      row.classList.remove("open");
       row.classList.remove("completed");
+      row.cells[0].innerHTML="locked";
     }
   
   });
