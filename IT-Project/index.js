@@ -33,12 +33,12 @@ var courses = [
 
 
 const container = document.querySelector(".program");
-
+//set up table
 container.innerHTML = `
   <table>
     <thead>
       <tr>
-        <th>Prerequisites</th>
+        <th>Status</th>
         <th>Course</th>
         <th>Credits</th>
         <th>Prereqs</th>
@@ -58,7 +58,7 @@ container.innerHTML = `
   </table>
 `;
       
-//color cells based on weather is has prerequisites
+//locks cells based on weather it has prerequisites
 function colorCells() {
   const rows = document.querySelectorAll("tbody tr");
 
@@ -82,7 +82,7 @@ function colorCells() {
 }
  colorCells();
 
-//function to turn completed courses green
+//function to turn completed courses green and toggle course id from open to complete
 function completeCourse() {
   document.addEventListener("click", (event) => {
     if (event.target.tagName !== "TD") return;
